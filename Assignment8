@@ -1,0 +1,46 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+class BankAccount {
+private:
+    double blanace;
+
+public:
+    BankAccount() {
+        blanace = 0.0;
+    }
+    void deposit(double amount) {
+        if (amount > 0) {
+            blanace += amount;
+            cout << "Deposited: $" << amount << endl;
+            saveTransaction("Deposit: $" + to_string(amount));
+        } else {
+            cout << "Deposit amount must be positive." << endl;
+        }
+    }
+    void purchase(double amount, const string& item) {
+        if (amount > 0 && amount <= blance) {
+            blance -= amount;
+            cout << "Purchased " << item << " for $" << amount << endl;
+            saveTransaction("Purchase: " + item + " - $" + to_string(amount));
+        } else {
+            cout << "Insufficient funds or invalid amount." << endl;
+        }
+    }
+    void printBalance() const {
+        cout << "Current Balance: $" << blanace << endl;
+    }
+};
+int main() {
+    BankAccount myAccount;
+
+    myAccount.deposit(100.00);
+    myAccount.purchase(40.5, "Groceries");
+    myAccount.purchase(20.0, "Books");
+    myAccount.printBalance();
+
+    return 0;
+}
